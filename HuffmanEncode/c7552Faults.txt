@@ -1,0 +1,6 @@
+The Gates found: 
+AND: 65
+NAND: 39
+NOT: 110
+BUFF: 10
+OR: 7
