@@ -3,143 +3,115 @@
 #include <stdlib.h>
 #include <vector>
 #include <string>
-#include <algorithm>
-#include <map>
 
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-    //Get the three file names
-    if (argc != 4)
+    //Get the files
+    if (argc != 3)
     {
-        cout << "There must be 3 files listed" << endl;
+        cout << "There should be a bench file and test file specified" << endl;
         exit(-1);
     }
-    char *uFaultName = argv[1];
-    char *benchName = argv[2];
-    char *outputName = argv[3];
-    vector<string> faults;
-    map<string, int> gateList;
-    vector<string> gateTypes;
-
-    //Open the ufaults file
-    ifstream uFault;
-    uFault.open(uFaultName, ios::out);
-    //Check that file is open
-    if (uFault.is_open())
-    {
-        string line;
-        while (getline(uFault, line))
-        {
-            //Find where the slash is
-            int pos = line.find("/");
-            string withoutSlash = line.substr(0, pos-1);
-
-            //Check if this string has an ->
-            pos = withoutSlash.find("->");
-            if (pos != -1)
-            {
-                string firstFault = withoutSlash.substr(0, pos-1);
-                string secondFault = withoutSlash.substr(pos+2);
-//                if (find(faults.begin(), faults.end(), firstFault) == faults.end())
-//                {
-//                    faults.push_back(firstFault);
-//                }
-                if (find(faults.begin(), faults.end(), secondFault) == faults.end())
-                {
-                    faults.push_back(secondFault);
-                }
-            }
-            else
-            {
-                if (find(faults.begin(), faults.end(), withoutSlash) == faults.end())
-                {
-                    faults.push_back(withoutSlash);
-                }
-            }
-        }
-    }
-    else
-    {
-        cout << "There was an error opening: " << uFaultName << endl;
-    }
-
-    //Close the file
-    uFault.close();
-
-    cout << "The faults found are: " << endl;
-    for (int i = 0; (unsigned)i < faults.size(); i++)
-    {
-        cout << faults.at(i) << endl;
-    }
-    cout << endl;
+    char *benchName = argv[1];
+    char *testFile = argv[2];
+    int numInputs = 0;
+    vector<string> inputVectors;
+    vector<string> outputVectors;
 
     //Open the bench file
     ifstream bench;
     bench.open(benchName, ios::out);
-    //Check that the file is open
+    //Check that file is open
     if (bench.is_open())
     {
+        cout << "Counting the inputs in the file " << benchName << endl;
         string line;
         while (getline(bench, line))
         {
-            for (int i = 0; (unsigned) i < faults.size(); i++)
+            //Find where the slash is
+            size_t pos = line.find("INPUT");
+
+            //If position != -1 then "INPUT" was found
+            //Increment counter
+            if (pos != string::npos)
             {
-                string stringToCheck = faults.at(i) + " = ";
-                int pos = line.find(stringToCheck);
-                if (pos != -1)
-                {
-                    string fullGate = line.substr(pos+stringToCheck.size());
-                    int gatePos = fullGate.find("(");
-                    string gate = fullGate.substr(0, gatePos);
-                    //Check if gate is in map
-                    if (gateList.find(gate) == gateList.end())
-                    {
-                        gateList[gate] = 1;
-                        gateTypes.push_back(gate);
-                    }
-                    else
-                    {
-                        int value = gateList.at(gate);
-                        gateList[gate] = value+1;
-                    }
-                }
+                numInputs++;
             }
         }
     }
     else
     {
-        cout << "There was an error opening the file " << benchName << endl;
+        cout << "There was an error opening: " << benchName << endl;
     }
 
     //Close the file
     bench.close();
 
-    //Output the gates found
-    cout << "The Gates found: " << endl;
-    for (int i = 0; (unsigned)i < gateTypes.size(); i++)
+    //Print out the number of inputs
+    cout << "The number of inputs for " << benchName << " is " << numInputs << endl;
+    cout << endl;
+
+    //Get the test vectors for the specified file
+    //Open the test file
+    ifstream test;
+    test.open(testFile, ios::out);
+    //Check that the file is open
+    if (test.is_open())
     {
-        cout << gateTypes.at(i) << ": " << gateList[gateTypes.at(i)] << endl;
+        cout << "Getting the test vectors for the file " << testFile << endl;
+        string line;
+        while (getline(test, line))
+        {
+            //Find if there is a test vector on this line
+            size_t positionOfVector = -1;
+            bool foundVector = false;
+            if (line.find(": 0") != string::npos)
+            {
+                positionOfVector = line.find(": 0") + 2;
+                foundVector = true;
+            }
+            else if (line.find(": 1") != string::npos)
+            {
+                positionOfVector = line.find(": 1") + 2;
+                foundVector = true;
+            }
+
+            if (foundVector == true)
+            {
+                //Get the input and output vector
+                string inputNOutput = line.substr(positionOfVector);
+
+                //Split the input and output vector
+                size_t endInput = inputNOutput.find(" ");
+                string inputVec = inputNOutput.substr(0, endInput);
+                string outputVec = inputNOutput.substr(endInput+1);
+
+                //Add the input and output to the vector
+                inputVectors.push_back(inputVec);
+                outputVectors.push_back(outputVec);
+            }
+        }
+    }
+
+    //Close the file
+    test.close();
+
+    //Output the input and output vectors
+    cout << "The input test vectors for " << benchName << " are:" << endl;
+    for (int i = 0; (unsigned)i < inputVectors.size(); i++)
+    {
+        cout << inputVectors.at(i) << endl;
     }
     cout << endl;
 
-    //Place data in output file
-    ofstream output(outputName);
-    if (output.is_open())
+    cout << "The output test vectors for " << benchName << " are:" << endl;
+    for (int i = 0; (unsigned)i < outputVectors.size(); i++)
     {
-        output << "The Gates found: \n";
-        for (int i = 0; (unsigned)i < gateTypes.size(); i++)
-        {
-            output << gateTypes.at(i) << ": " << gateList[gateTypes.at(i)] << "\n";
-        }
-    }
-    else
-    {
-        cout << "There was an error opening the file " << outputName << endl;
+        cout << outputVectors.at(i) << endl;
     }
 
-    output.close();
     return 0;
 }
 

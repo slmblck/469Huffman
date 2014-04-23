@@ -1,0 +1,15 @@
+* Name of circuit:  circuits/s27.bench
+* Primary inputs :
+  G0 G1 G2 G3 G5 G6 G7 
+  
+* Primary outputs:
+  G17 G10 G11_EXTRA G13 
+
+* Test patterns and fault free responses:
+
+   1: 1101000 1101
+   2: 0100110 1001
+   3: 0000011 0011
+   4: 1001010 0010
+   5: 0000000 1000
+   6: 1110010 1100
