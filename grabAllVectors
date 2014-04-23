@@ -3,7 +3,7 @@
 for file in circuits/*
 do
   x="$file"
-  y=${x%%.*}
+  y=${x%.*}
   y=${y##*/}
   echo Running atalanta on "$y"
   ./atalanta "$file" -t TestVectors/"$y".test
