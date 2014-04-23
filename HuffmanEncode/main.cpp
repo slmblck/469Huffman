@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <string>
+#include <iterator>
 
 using namespace std;
 
@@ -19,6 +20,12 @@ int main(int argc, char* argv[])
     int numInputs = 0;
     vector<string> inputVectors;
     vector<string> outputVectors;
+    vector<string> inputVectorsBroken;
+    vector<string> outputVectorsBroken;
+    vector<string> inputVectorsUnique;
+    vector<int> numInputVectorsUnique;
+    vector<string> outputVectorsUnique;
+    vector<int> numOutputVectorsUnique;
 
     //Open the bench file
     ifstream bench;
@@ -87,10 +94,25 @@ int main(int argc, char* argv[])
                 size_t endInput = inputNOutput.find(" ");
                 string inputVec = inputNOutput.substr(0, endInput);
                 string outputVec = inputNOutput.substr(endInput+1);
+                size_t outSize = outputVec.size();
 
                 //Add the input and output to the vector
                 inputVectors.push_back(inputVec);
                 outputVectors.push_back(outputVec);
+
+                //Now break up the vectors into strings of length 4
+                for(int i = 0; (unsigned)i < endInput; i = i + 4){
+                    string temp = inputVec.substr(i, 4);
+                    //removes spaces if they exist (usually does nothing)
+                    std::string::iterator end_pos = std::remove(temp.begin(), temp.end(), ' ');
+                    temp.erase(end_pos, temp.end());
+                    inputVectorsBroken.push_back(temp);
+                }
+
+                for(int i = 0; (unsigned)i < outSize; i = i + 4){
+                    string temp = inputVec.substr(i, 4);
+                    outputVectorsBroken.push_back(temp);
+                }
             }
         }
     }
@@ -110,6 +132,59 @@ int main(int argc, char* argv[])
     for (int i = 0; (unsigned)i < outputVectors.size(); i++)
     {
         cout << outputVectors.at(i) << endl;
+    }
+
+    cout << "Broken up input" << endl;
+    for (int i = 0; (unsigned)i< inputVectorsBroken.size(); i++){
+        cout << inputVectorsBroken.at(i) << endl;
+    }
+
+    cout << "Broken up output" << endl;
+    for(int i = 0; (unsigned)i < outputVectorsBroken.size(); i++){
+        cout << inputVectorsBroken.at(i) << endl;
+    }
+
+    //Now that we have the input and output vectors all broken up
+    //Count them up to see if we can compress any
+    //This looks bad but has okay runtime
+    for(int i = 0; (unsigned)i < inputVectorsBroken.size(); i++){
+        string temp = inputVectorsBroken.at(i);
+        inputVectorsUnique.push_back(temp);
+        int count = 0;
+        //cout << "Got here " << i << endl;
+        for(int j = 0; (unsigned)j < inputVectorsBroken.size(); j++){
+            if(temp.compare(inputVectorsBroken.at(j)) == 0){
+                count++;
+                //inputVectorsBroken.erase(i);
+                inputVectorsBroken.erase(inputVectorsBroken.begin() + j);
+            }
+        }
+        numInputVectorsUnique.push_back(count);
+    }
+
+    for(int i = 0; (unsigned)i < outputVectorsBroken.size(); i++){
+        string temp = outputVectorsBroken.at(i);
+        outputVectorsUnique.push_back(temp);
+        int count = 0;
+        //cout << "Got here " << i << endl;
+        for(int j = 0; (unsigned)j < outputVectorsBroken.size(); j++){
+            if(temp.compare(outputVectorsBroken.at(j)) == 0){
+                count++;
+                //inputVectorsBroken.erase(i);
+                outputVectorsBroken.erase(outputVectorsBroken.begin() + j);
+            }
+        }
+        numOutputVectorsUnique.push_back(count);
+    }
+
+    cout << "Counted input" << endl;
+    for(int i = 0; (unsigned)i < inputVectorsUnique.size(); i++){
+        cout << inputVectorsUnique.at(i) << " : " << numInputVectorsUnique.at(i) << endl;
+    }
+
+    cout << "Counted output" << endl;
+    for(int i = 0; (unsigned)i < outputVectorsUnique.size(); i++){
+        cout << outputVectorsUnique.at(i) << " : " << numOutputVectorsUnique.at(i) << endl;
     }
 
     return 0;
