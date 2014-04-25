@@ -7,6 +7,37 @@
 
 using namespace std;
 
+int substring_compare(string x, string y){
+    if(x.size() != y.size()){
+        return 0;
+    } else {
+        for(int i = 0; (unsigned)i < x.size(); i++){
+            if(x.at(i) != y.at(i)){
+                return 0;
+            }
+        }
+    }
+
+    return 1;
+
+}
+
+int char_substring_comp(char *x, char *y){
+    if(sizeof(x) != sizeof(y)){
+        return 0;
+    } else {
+        int i = 0;
+        while(x[i] != NULL){
+            if(x[i] != y[i]){
+                return 0;
+            }
+            i++;
+        }
+    }
+
+    return 1;
+}
+
 int main(int argc, char* argv[])
 {
     //Get the files
@@ -93,6 +124,7 @@ int main(int argc, char* argv[])
                 //Split the input and output vector
                 size_t endInput = inputNOutput.find(" ");
                 string inputVec = inputNOutput.substr(0, endInput);
+                //string outputVec = inputNOutput.substr(endInput+1, inputNOutput.size());
                 string outputVec = inputNOutput.substr(endInput+1);
                 size_t outSize = outputVec.size();
 
@@ -100,17 +132,29 @@ int main(int argc, char* argv[])
                 inputVectors.push_back(inputVec);
                 outputVectors.push_back(outputVec);
 
+                inputVec.erase(std::remove(inputVec.begin(), inputVec.end(), '\n'), inputVec.end());
+                inputVec.erase(std::remove(inputVec.begin(), inputVec.end(), ' '), inputVec.end());
+
                 //Now break up the vectors into strings of length 4
                 for(int i = 0; (unsigned)i < endInput; i = i + 4){
                     string temp = inputVec.substr(i, 4);
                     //removes spaces if they exist (usually does nothing)
-                    std::string::iterator end_pos = std::remove(temp.begin(), temp.end(), ' ');
-                    temp.erase(end_pos, temp.end());
+                    //temp.erase(end_pos, temp.end());
+
+                    while (temp.size() < 4) {
+                        temp.append("0");
+                    }
+
                     inputVectorsBroken.push_back(temp);
                 }
 
                 for(int i = 0; (unsigned)i < outSize; i = i + 4){
-                    string temp = inputVec.substr(i, 4);
+                    string temp = outputVec.substr(i, 4);
+
+                    while (temp.size() < 4) {
+                        temp.append("0");
+                    }
+
                     outputVectorsBroken.push_back(temp);
                 }
             }
@@ -133,44 +177,51 @@ int main(int argc, char* argv[])
     {
         cout << outputVectors.at(i) << endl;
     }
+    cout << endl;
 
     cout << "Broken up input" << endl;
     for (int i = 0; (unsigned)i< inputVectorsBroken.size(); i++){
         cout << inputVectorsBroken.at(i) << endl;
     }
+    cout << endl;
 
     cout << "Broken up output" << endl;
     for(int i = 0; (unsigned)i < outputVectorsBroken.size(); i++){
-        cout << inputVectorsBroken.at(i) << endl;
+        cout << outputVectorsBroken.at(i) << endl;
     }
+    cout << endl;
 
     //Now that we have the input and output vectors all broken up
     //Count them up to see if we can compress any
     //This looks bad but has okay runtime
     for(int i = 0; (unsigned)i < inputVectorsBroken.size(); i++){
-        string temp = inputVectorsBroken.at(i);
+        string temp = inputVectorsBroken[i];
         inputVectorsUnique.push_back(temp);
         int count = 0;
         //cout << "Got here " << i << endl;
         for(int j = 0; (unsigned)j < inputVectorsBroken.size(); j++){
-            if(temp.compare(inputVectorsBroken.at(j)) == 0){
+            string stemp = inputVectorsBroken[j];
+            size_t found;
+            if((found = temp.find(stemp)) != string::npos){
+                cout << temp << "Equivalent to " << stemp << endl;
                 count++;
-                //inputVectorsBroken.erase(i);
                 inputVectorsBroken.erase(inputVectorsBroken.begin() + j);
             }
         }
+        //temp.clear();
         numInputVectorsUnique.push_back(count);
     }
 
     for(int i = 0; (unsigned)i < outputVectorsBroken.size(); i++){
-        string temp = outputVectorsBroken.at(i);
+        string temp = outputVectorsBroken[i];
         outputVectorsUnique.push_back(temp);
         int count = 0;
         //cout << "Got here " << i << endl;
         for(int j = 0; (unsigned)j < outputVectorsBroken.size(); j++){
-            if(temp.compare(outputVectorsBroken.at(j)) == 0){
+            string stemp = outputVectorsBroken[j];
+            size_t found;
+            if((found = temp.find(stemp)) != string::npos){
                 count++;
-                //inputVectorsBroken.erase(i);
                 outputVectorsBroken.erase(outputVectorsBroken.begin() + j);
             }
         }
