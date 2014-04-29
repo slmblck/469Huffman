@@ -45,8 +45,10 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../HuffmanEncode/main.cpp 
-OBJECTS       = main.o
+SOURCES       = ../HuffmanEncode/main.cpp \
+		../HuffmanEncode/node.cpp 
+OBJECTS       = main.o \
+		node.o
 DIST          = ../../Qt/5.2.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/qdevice.pri \
 		../../Qt/5.2.0/clang_64/mkspecs/features/device_config.prf \
@@ -134,6 +136,7 @@ DIST          = ../../Qt/5.2.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.2.0/clang_64/mkspecs/features/spec_post.prf \
+		../HuffmanEncode/.qmake.stash \
 		../../Qt/5.2.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/features/default_pre.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -282,6 +285,7 @@ Makefile: ../HuffmanEncode/hardToTest.pro ../../Qt/5.2.0/clang_64/mkspecs/macx-c
 		../../Qt/5.2.0/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.2.0/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.2.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/features/default_pre.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -387,6 +391,7 @@ Makefile: ../HuffmanEncode/hardToTest.pro ../../Qt/5.2.0/clang_64/mkspecs/macx-c
 ../../Qt/5.2.0/clang_64/mkspecs/features/qt_config.prf:
 ../../Qt/5.2.0/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../Qt/5.2.0/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Qt/5.2.0/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt/5.2.0/clang_64/mkspecs/features/default_pre.prf:
 ../../Qt/5.2.0/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -444,6 +449,9 @@ compiler_clean:
 
 main.o: ../HuffmanEncode/main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../HuffmanEncode/main.cpp
+
+node.o: ../HuffmanEncode/node.cpp ../HuffmanEncode/node.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o node.o ../HuffmanEncode/node.cpp
 
 ####### Install
 

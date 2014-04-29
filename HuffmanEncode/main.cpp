@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <iterator>
+#include "node.h"
 
 using namespace std;
 
@@ -54,9 +55,13 @@ int main(int argc, char* argv[])
     vector<string> inputVectorsBroken;
     vector<string> outputVectorsBroken;
     vector<string> inputVectorsUnique;
-    vector<int> numInputVectorsUnique;
+    vector<float> numInputVectorsUnique;
     vector<string> outputVectorsUnique;
-    vector<int> numOutputVectorsUnique;
+    vector<float> numOutputVectorsUnique;
+    vector<float> probInput;
+    vector<float> probOutput;
+    float numUniqueIn = 0;
+    float numUniqueOut = 0;
 
     //Open the bench file
     ifstream bench;
@@ -228,14 +233,34 @@ int main(int argc, char* argv[])
         numOutputVectorsUnique.push_back(count);
     }
 
+    //Now we need to get the probabilities
+    //So just loop through and add together all the numInputVectorsUnique
+    for(int i = 0; (unsigned)i < inputVectorsUnique.size(); i++){
+        numUniqueIn = numUniqueIn + numInputVectorsUnique.at(i);
+    }
+
+    for(int i = 0; (unsigned)i < outputVectorsUnique.size(); i++){
+        numUniqueOut = numUniqueOut + numOutputVectorsUnique.at(i);
+    }
+
+    for(int i = 0; (unsigned)i < inputVectorsUnique.size(); i++){
+        probInput.push_back((float)(numInputVectorsUnique.at(i)/numUniqueIn));
+    }
+
+    for(int i = 0; (unsigned)i < outputVectorsUnique.size(); i++){
+        probOutput.push_back(numOutputVectorsUnique.at(i)/numUniqueOut);
+    }
+
+    //cout << numUniqueIn << endl;
+
     cout << "Counted input" << endl;
     for(int i = 0; (unsigned)i < inputVectorsUnique.size(); i++){
-        cout << inputVectorsUnique.at(i) << " : " << numInputVectorsUnique.at(i) << endl;
+        cout << inputVectorsUnique.at(i) << " : " << numInputVectorsUnique.at(i) << ":" << probInput.at(i) <<endl;
     }
 
     cout << "Counted output" << endl;
     for(int i = 0; (unsigned)i < outputVectorsUnique.size(); i++){
-        cout << outputVectorsUnique.at(i) << " : " << numOutputVectorsUnique.at(i) << endl;
+        cout << outputVectorsUnique.at(i) << " : " << numOutputVectorsUnique.at(i) << ":" << probOutput.at(i) << endl;
     }
 
     return 0;
