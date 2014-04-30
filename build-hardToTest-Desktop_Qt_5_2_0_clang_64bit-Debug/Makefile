@@ -45,10 +45,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../HuffmanEncode/main.cpp \
-		../HuffmanEncode/node.cpp 
-OBJECTS       = main.o \
-		node.o
+SOURCES       = ../HuffmanEncode/main.cpp 
+OBJECTS       = main.o
 DIST          = ../../Qt/5.2.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.2.0/clang_64/mkspecs/qdevice.pri \
 		../../Qt/5.2.0/clang_64/mkspecs/features/device_config.prf \
@@ -449,9 +447,6 @@ compiler_clean:
 
 main.o: ../HuffmanEncode/main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../HuffmanEncode/main.cpp
-
-node.o: ../HuffmanEncode/node.cpp ../HuffmanEncode/node.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o node.o ../HuffmanEncode/node.cpp
 
 ####### Install
 

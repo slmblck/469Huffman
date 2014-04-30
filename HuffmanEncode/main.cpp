@@ -4,9 +4,21 @@
 #include <vector>
 #include <string>
 #include <iterator>
-#include "node.h"
 
 using namespace std;
+
+typedef struct node node;
+
+struct node{
+    int frequency;
+    string val;
+    node *left;
+    node *right;
+};
+
+bool listCmp (node *i,node *j) {
+    return (i->frequency > j->frequency);
+}
 
 int substring_compare(string x, string y){
     if(x.size() != y.size()){
@@ -20,35 +32,42 @@ int substring_compare(string x, string y){
     }
 
     return 1;
-
 }
 
-int char_substring_comp(char *x, char *y){
-    if(sizeof(x) != sizeof(y)){
-        return 0;
-    } else {
-        int i = 0;
-        while(x[i] != NULL){
-            if(x[i] != y[i]){
-                return 0;
-            }
-            i++;
-        }
-    }
+node *createLeaf(string substring, int frequency){
+    node *newNode = new node;
+    newNode->val = substring;
+    newNode->frequency = frequency;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
 
-    return 1;
+node *buildUp(node *x, node *y){
+    node *parent = new node;
+    parent->frequency = x->frequency + y->frequency;
+    parent->val.assign("");
+    if(x->frequency < y->frequency){
+        parent->left = x;
+        parent->right = y;
+    } else {
+        parent->left = y;
+        parent->right = x;
+    }
+    return parent;
 }
 
 int main(int argc, char* argv[])
 {
     //Get the files
-    if (argc != 3)
+    if (argc != 4)
     {
         cout << "There should be a bench file and test file specified" << endl;
         exit(-1);
     }
     char *benchName = argv[1];
     char *testFile = argv[2];
+    int breakUpFactor = atoi(argv[3]);
     int numInputs = 0;
     vector<string> inputVectors;
     vector<string> outputVectors;
@@ -60,6 +79,7 @@ int main(int argc, char* argv[])
     vector<float> numOutputVectorsUnique;
     vector<float> probInput;
     vector<float> probOutput;
+    vector<node*> nodeList;
     float numUniqueIn = 0;
     float numUniqueOut = 0;
 
@@ -141,22 +161,22 @@ int main(int argc, char* argv[])
                 inputVec.erase(std::remove(inputVec.begin(), inputVec.end(), ' '), inputVec.end());
 
                 //Now break up the vectors into strings of length 4
-                for(int i = 0; (unsigned)i < endInput; i = i + 4){
-                    string temp = inputVec.substr(i, 4);
+                for(int i = 0; (unsigned)i < endInput; i = i + breakUpFactor){
+                    string temp = inputVec.substr(i, breakUpFactor);
                     //removes spaces if they exist (usually does nothing)
                     //temp.erase(end_pos, temp.end());
 
-                    while (temp.size() < 4) {
+                    while (temp.size() < (unsigned)breakUpFactor) {
                         temp.append("0");
                     }
 
                     inputVectorsBroken.push_back(temp);
                 }
 
-                for(int i = 0; (unsigned)i < outSize; i = i + 4){
-                    string temp = outputVec.substr(i, 4);
+                for(int i = 0; (unsigned)i < outSize; i = i + breakUpFactor){
+                    string temp = outputVec.substr(i, breakUpFactor);
 
-                    while (temp.size() < 4) {
+                    while (temp.size() < (unsigned)breakUpFactor) {
                         temp.append("0");
                     }
 
@@ -262,6 +282,65 @@ int main(int argc, char* argv[])
     for(int i = 0; (unsigned)i < outputVectorsUnique.size(); i++){
         cout << outputVectorsUnique.at(i) << " : " << numOutputVectorsUnique.at(i) << ":" << probOutput.at(i) << endl;
     }
+
+    /*
+    * Here is where the actual building of the tree begins
+    */
+    //Create all the leaf nodes and put them in a vector
+
+    for(int i = 0; (unsigned)i < inputVectorsUnique.size(); i++){
+        nodeList.push_back(createLeaf(inputVectorsUnique.at(i), numInputVectorsUnique.at(i)));
+    }
+
+    cout << "nodeList test" << endl;
+    for(int i = 0; (unsigned)i < nodeList.size(); i++){
+        node *temp = nodeList.at(i);
+        int num = temp->frequency;
+        cout << num << endl;
+    }
+
+    //Now sort
+    sort(nodeList.begin(), nodeList.end(), listCmp);
+
+    cout << "nodeList sort test" << endl;
+    for(int i = 0; (unsigned)i < nodeList.size(); i++){
+        node *temp = nodeList.at(i);
+        int num = temp->frequency;
+        cout << num << endl;
+    }
+
+    cout << endl;
+    //Now try to build list
+    while(nodeList.size() > 1){
+        node *temp = nodeList.at(nodeList.size() - 1);
+        node *temp1 = nodeList.at(nodeList.size() - 2);
+        nodeList.push_back(buildUp(temp, temp1));
+        //node *p = nodeList.at(nodeList.size() -1);
+        //cout << p->frequency << endl;
+        //if(nodeList.size() > 2){
+        nodeList.erase(nodeList.end() - 2);
+        nodeList.erase(nodeList.end() - 2);
+        //} else {
+            //nodeList.erase(nodeList.end() - 1);
+        //}
+        sort(nodeList.begin(), nodeList.end(), listCmp);
+        for(int i = 0; (unsigned)i < nodeList.size(); i++){
+            node *temp = nodeList.at(i);
+            int num = temp->frequency;
+            cout << num << endl;
+        }
+        cout << endl;
+    }
+
+    cout << "nodeList build test" << endl;
+    for(int i = 0; (unsigned)i < nodeList.size(); i++){
+        node *temp = nodeList.at(i);
+        int num = temp->frequency;
+        cout << num << endl;
+        //cout << temp->left->frequency << endl;
+    }
+
+    cout << "Got to the end" << endl;
 
     return 0;
 }
