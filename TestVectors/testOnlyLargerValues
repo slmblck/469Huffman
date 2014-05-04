@@ -1,0 +1,40 @@
+#!/bin/bash
+# Run all of the tests 2 4 6 8 10 12 14 16
+
+#./a.out s15850.1.bench s15850.1.test 2 s15850.1.length2.output
+#./a.out s15850.1.bench s15850.1.test 4 s15850.1.length4.output
+#./a.out s15850.1.bench s15850.1.test 6 s15850.1.length6.output
+./a.out s15850.1.bench s15850.1.test 8 s15850.1.length8.output
+./a.out s15850.1.bench s15850.1.test 10 s15850.1.length10.output
+./a.out s15850.1.bench s15850.1.test 12 s15850.1.length12.output
+./a.out s15850.1.bench s15850.1.test 14 s15850.1.length14.output
+./a.out s15850.1.bench s15850.1.test 16 s15850.1.length16.output
+
+#./a.out s35932.bench s35932.test 2 s35932length2.output
+#./a.out s35932.bench s35932.test 4 s35932length4.output
+#./a.out s35932.bench s35932.test 6 s35932length6.output
+./a.out s35932.bench s35932.test 8 s35932length8.output
+./a.out s35932.bench s35932.test 10 s35932length10.output
+./a.out s35932.bench s35932.test 12 s35932length12.output
+./a.out s35932.bench s35932.test 14 s35932length14.output
+./a.out s35932.bench s35932.test 16 s35932length16.output
+
+#./a.out s38417.bench s38417.test 2 s38417length2.output
+#./a.out s38417.bench s38417.test 4 s38417length4.output
+#./a.out s38417.bench s38417.test 6 s38417length6.output
+./a.out s38417.bench s38417.test 8 s38417length8.output
+./a.out s38417.bench s38417.test 10 s38417length10.output
+./a.out s38417.bench s38417.test 12 s38417length12.output
+./a.out s38417.bench s38417.test 14 s38417length14.output
+./a.out s38417.bench s38417.test 16 s38417length16.output
+
+#./a.out s38584.1.bench s38584.1.test 2 s38584.1.length2.output
+#./a.out s38584.1.bench s38584.1.test 4 s38584.1.length4.output
+#./a.out s38584.1.bench s38584.1.test 6 s38584.1.length6.output
+./a.out s38584.1.bench s38584.1.test 8 s38584.1.length8.output
+./a.out s38584.1.bench s38584.1.test 10 s38584.1.length10.output
+./a.out s38584.1.bench s38584.1.test 12 s38584.1.length12.output
+./a.out s38584.1.bench s38584.1.test 14 s38584.1.length14.output
+./a.out s38584.1.bench s38584.1.test 16 s38584.1.length16.output
+
+

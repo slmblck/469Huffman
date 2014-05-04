@@ -1,0 +1,284 @@
+#!/bin/bash
+# Run all of the tests 2 4 6 8 10 12 14 16
+
+./a.out s27.bench s27.test 2 s27length2.output
+./a.out s27.bench s27.test 4 s27length4.output
+./a.out s27.bench s27.test 6 s27length6.output
+./a.out s27.bench s27.test 8 s27length8.output
+./a.out s27.bench s27.test 10 s27length10.output
+./a.out s27.bench s27.test 12 s27length12.output
+./a.out s27.bench s27.test 14 s27length14.output
+./a.out s27.bench s27.test 16 s27length16.output
+
+./a.out s208.bench s208.test 2 s208length2.output
+./a.out s208.bench s208.test 4 s208length4.output
+./a.out s208.bench s208.test 6 s208length6.output
+./a.out s208.bench s208.test 8 s208length8.output
+./a.out s208.bench s208.test 10 s208length10.output
+./a.out s208.bench s208.test 12 s208length12.output
+./a.out s208.bench s208.test 14 s208length14.output
+./a.out s208.bench s208.test 16 s208length16.output
+
+./a.out s298.bench s298.test 2 s298length2.output
+./a.out s298.bench s298.test 4 s298length4.output
+./a.out s298.bench s298.test 6 s298length6.output
+./a.out s298.bench s298.test 8 s298length8.output
+./a.out s298.bench s298.test 10 s298length10.output
+./a.out s298.bench s298.test 12 s298length12.output
+./a.out s298.bench s298.test 14 s298length14.output
+./a.out s298.bench s298.test 16 s298length16.output
+
+./a.out s344.bench s344.test 2 s344length2.output
+./a.out s344.bench s344.test 4 s344length4.output
+./a.out s344.bench s344.test 6 s344length6.output
+./a.out s344.bench s344.test 8 s344length8.output
+./a.out s344.bench s344.test 10 s344length10.output
+./a.out s344.bench s344.test 12 s344length12.output
+./a.out s344.bench s344.test 14 s344length14.output
+./a.out s344.bench s344.test 16 s344length16.output
+
+./a.out s349.bench s349.test 2 s349length2.output
+./a.out s349.bench s349.test 4 s349length4.output
+./a.out s349.bench s349.test 6 s349length6.output
+./a.out s349.bench s349.test 8 s349length8.output
+./a.out s349.bench s349.test 10 s349length10.output
+./a.out s349.bench s349.test 12 s349length12.output
+./a.out s349.bench s349.test 14 s349length14.output
+./a.out s349.bench s349.test 16 s349length16.output
+
+./a.out s382.bench s382.test 2 s382length2.output
+./a.out s382.bench s382.test 4 s382length4.output
+./a.out s382.bench s382.test 6 s382length6.output
+./a.out s382.bench s382.test 8 s382length8.output
+./a.out s382.bench s382.test 10 s382length10.output
+./a.out s382.bench s382.test 12 s382length12.output
+./a.out s382.bench s382.test 14 s382length14.output
+./a.out s382.bench s382.test 16 s382length16.output
+
+./a.out s386.bench s386.test 2 s386length2.output
+./a.out s386.bench s386.test 4 s386length4.output
+./a.out s386.bench s386.test 6 s386length6.output
+./a.out s386.bench s386.test 8 s386length8.output
+./a.out s386.bench s386.test 10 s386length10.output
+./a.out s386.bench s386.test 12 s386length12.output
+./a.out s386.bench s386.test 14 s386length14.output
+./a.out s386.bench s386.test 16 s386length16.output
+
+./a.out s400.bench s400.test 2 s400length2.output
+./a.out s400.bench s400.test 4 s400length4.output
+./a.out s400.bench s400.test 6 s400length6.output
+./a.out s400.bench s400.test 8 s400length8.output
+./a.out s400.bench s400.test 10 s400length10.output
+./a.out s400.bench s400.test 12 s400length12.output
+./a.out s400.bench s400.test 14 s400length14.output
+./a.out s400.bench s400.test 16 s400length16.output
+
+./a.out s420.bench s420.test 2 s420length2.output
+./a.out s420.bench s420.test 4 s420length4.output
+./a.out s420.bench s420.test 6 s420length6.output
+./a.out s420.bench s420.test 8 s420length8.output
+./a.out s420.bench s420.test 10 s420length10.output
+./a.out s420.bench s420.test 12 s420length12.output
+./a.out s420.bench s420.test 14 s420length14.output
+./a.out s420.bench s420.test 16 s420length16.output
+
+./a.out s444.bench s444.test 2 s444length2.output
+./a.out s444.bench s444.test 4 s444length4.output
+./a.out s444.bench s444.test 6 s444length6.output
+./a.out s444.bench s444.test 8 s444length8.output
+./a.out s444.bench s444.test 10 s444length10.output
+./a.out s444.bench s444.test 12 s444length12.output
+./a.out s444.bench s444.test 14 s444length14.output
+./a.out s444.bench s444.test 16 s444length16.output
+
+
+./a.out s510.bench s510.test 2 s510length2.output
+./a.out s510.bench s510.test 4 s510length4.output
+./a.out s510.bench s510.test 6 s510length6.output
+./a.out s510.bench s510.test 8 s510length8.output
+./a.out s510.bench s510.test 10 s510length10.output
+./a.out s510.bench s510.test 12 s510length12.output
+./a.out s510.bench s510.test 14 s510length14.output
+./a.out s510.bench s510.test 16 s510length16.output
+
+./a.out s526.bench s526.test 2 s526length2.output
+./a.out s526.bench s526.test 4 s526length4.output
+./a.out s526.bench s526.test 6 s526length6.output
+./a.out s526.bench s526.test 8 s526length8.output
+./a.out s526.bench s526.test 10 s526length10.output
+./a.out s526.bench s526.test 12 s526length12.output
+./a.out s526.bench s526.test 14 s526length14.output
+./a.out s526.bench s526.test 16 s526length16.output
+
+./a.out s526n.bench s526n.test 2 s526nlength2.output
+./a.out s526n.bench s526n.test 4 s526nlength4.output
+./a.out s526n.bench s526n.test 6 s526nlength6.output
+./a.out s526n.bench s526n.test 8 s526nlength8.output
+./a.out s526n.bench s526n.test 10 s526nlength10.output
+./a.out s526n.bench s526n.test 12 s526nlength12.output
+./a.out s526n.bench s526n.test 14 s526nlength14.output
+./a.out s526n.bench s526n.test 16 s526nlength16.output
+
+./a.out s641.bench s641.test 2 s641length2.output
+./a.out s641.bench s641.test 4 s641length4.output
+./a.out s641.bench s641.test 6 s641length6.output
+./a.out s641.bench s641.test 8 s641length8.output
+./a.out s641.bench s641.test 10 s641length10.output
+./a.out s641.bench s641.test 12 s641length12.output
+./a.out s641.bench s641.test 14 s641length14.output
+./a.out s641.bench s641.test 16 s641length16.output
+
+./a.out s713.bench s713.test 2 s713length2.output
+./a.out s713.bench s713.test 4 s713length4.output
+./a.out s713.bench s713.test 6 s713length6.output
+./a.out s713.bench s713.test 8 s713length8.output
+./a.out s713.bench s713.test 10 s713length10.output
+./a.out s713.bench s713.test 12 s713length12.output
+./a.out s713.bench s713.test 14 s713length14.output
+./a.out s713.bench s713.test 16 s713length16.output
+
+./a.out s820.bench s820.test 2 s820length2.output
+./a.out s820.bench s820.test 4 s820length4.output
+./a.out s820.bench s820.test 6 s820length6.output
+./a.out s820.bench s820.test 8 s820length8.output
+./a.out s820.bench s820.test 10 s820length10.output
+./a.out s820.bench s820.test 12 s820length12.output
+./a.out s820.bench s820.test 14 s820length14.output
+./a.out s820.bench s820.test 16 s820length16.output
+
+./a.out s832.bench s832.test 2 s832length2.output
+./a.out s832.bench s832.test 4 s832length4.output
+./a.out s832.bench s832.test 6 s832length6.output
+./a.out s832.bench s832.test 8 s832length8.output
+./a.out s832.bench s832.test 10 s832length10.output
+./a.out s832.bench s832.test 12 s832length12.output
+./a.out s832.bench s832.test 14 s832length14.output
+./a.out s832.bench s832.test 16 s832length16.output
+
+./a.out s838.bench s838.test 2 s838length2.output
+./a.out s838.bench s838.test 4 s838length4.output
+./a.out s838.bench s838.test 6 s838length6.output
+./a.out s838.bench s838.test 8 s838length8.output
+./a.out s838.bench s838.test 10 s838length10.output
+./a.out s838.bench s838.test 12 s838length12.output
+./a.out s838.bench s838.test 14 s838length14.output
+./a.out s838.bench s838.test 16 s838length16.output
+
+./a.out s953.bench s953.test 2 s953length2.output
+./a.out s953.bench s953.test 4 s953length4.output
+./a.out s953.bench s953.test 6 s953length6.output
+./a.out s953.bench s953.test 8 s953length8.output
+./a.out s953.bench s953.test 10 s953length10.output
+./a.out s953.bench s953.test 12 s953length12.output
+./a.out s953.bench s953.test 14 s953length14.output
+./a.out s953.bench s953.test 16 s953length16.output
+
+./a.out s1196.bench s1196.test 2 s1196length2.output
+./a.out s1196.bench s1196.test 4 s1196length4.output
+./a.out s1196.bench s1196.test 6 s1196length6.output
+./a.out s1196.bench s1196.test 8 s1196length8.output
+./a.out s1196.bench s1196.test 10 s1196length10.output
+./a.out s1196.bench s1196.test 12 s1196length12.output
+./a.out s1196.bench s1196.test 14 s1196length14.output
+./a.out s1196.bench s1196.test 16 s1196length16.output
+
+./a.out s1238.bench s1238.test 2 s1238length2.output
+./a.out s1238.bench s1238.test 4 s1238length4.output
+./a.out s1238.bench s1238.test 6 s1238length6.output
+./a.out s1238.bench s1238.test 8 s1238length8.output
+./a.out s1238.bench s1238.test 10 s1238length12.output
+./a.out s1238.bench s1238.test 12 s1238length12.output
+./a.out s1238.bench s1238.test 14 s1238length14.output
+./a.out s1238.bench s1238.test 16 s1238length16.output
+
+./a.out s1423.bench s1423.test 2 s1423length2.output
+./a.out s1423.bench s1423.test 4 s1423length4.output
+./a.out s1423.bench s1423.test 6 s1423length6.output
+./a.out s1423.bench s1423.test 8 s1423length8.output
+./a.out s1423.bench s1423.test 10 s1423length10.output
+./a.out s1423.bench s1423.test 12 s1423length12.output
+./a.out s1423.bench s1423.test 14 s1423length14.output
+./a.out s1423.bench s1423.test 16 s1423length16.output
+
+./a.out s1488.bench s1488.test 2 s1488length2.output
+./a.out s1488.bench s1488.test 4 s1488length4.output
+./a.out s1488.bench s1488.test 6 s1488length6.output
+./a.out s1488.bench s1488.test 8 s1488length8.output
+./a.out s1488.bench s1488.test 10 s1488length10.output
+./a.out s1488.bench s1488.test 12 s1488length12.output
+./a.out s1488.bench s1488.test 14 s1488length14.output
+./a.out s1488.bench s1488.test 16 s1488length16.output
+
+./a.out s1494.bench s1494.test 2 s1494length2.output
+./a.out s1494.bench s1494.test 4 s1494length4.output
+./a.out s1494.bench s1494.test 6 s1494length6.output
+./a.out s1494.bench s1494.test 8 s1494length8.output
+./a.out s1494.bench s1494.test 10 s1494length10.output
+./a.out s1494.bench s1494.test 12 s1494length12.output
+./a.out s1494.bench s1494.test 14 s1494length14.output
+./a.out s1494.bench s1494.test 16 s1494length16.output
+
+./a.out s5378.bench s5378.test 2 s5378length2.output
+./a.out s5378.bench s5378.test 4 s5378length4.output
+./a.out s5378.bench s5378.test 6 s5378length6.output
+./a.out s5378.bench s5378.test 8 s5378length8.output
+./a.out s5378.bench s5378.test 10 s5378length10.output
+./a.out s5378.bench s5378.test 12 s5378length12.output
+./a.out s5378.bench s5378.test 14 s5378length14.output
+./a.out s5378.bench s5378.test 16 s5378length16.output
+
+./a.out s9234.1.bench s9234.1.test 2 s9234.1.length2.output
+./a.out s9234.1.bench s9234.1.test 4 s9234.1.length4.output
+./a.out s9234.1.bench s9234.1.test 6 s9234.1.length6.output
+./a.out s9234.1.bench s9234.1.test 8 s9234.1.length8.output
+./a.out s9234.1.bench s9234.1.test 10 s9234.1.length10.output
+./a.out s9234.1.bench s9234.1.test 12 s9234.1.length12.output
+./a.out s9234.1.bench s9234.1.test 14 s9234.1.length14.output
+./a.out s9234.1.bench s9234.1.test 16 s9234.1.length16.output
+
+./a.out s13207.1.bench s13207.1.test 2 s13207.1.length2.output
+./a.out s13207.1.bench s13207.1.test 4 s13207.1.length4.output
+./a.out s13207.1.bench s13207.1.test 6 s13207.1.length6.output
+./a.out s13207.1.bench s13207.1.test 8 s13207.1.length8.output
+./a.out s13207.1.bench s13207.1.test 10 s13207.1.length10.output
+./a.out s13207.1.bench s13207.1.test 12 s13207.1.length12.output
+./a.out s13207.1.bench s13207.1.test 14 s13207.1.length14.output
+./a.out s13207.1.bench s13207.1.test 16 s13207.1.length16.output
+
+./a.out s15850.1.bench s15850.1.test 2 s15850.1.length2.output
+./a.out s15850.1.bench s15850.1.test 4 s15850.1.length4.output
+./a.out s15850.1.bench s15850.1.test 6 s15850.1.length6.output
+./a.out s15850.1.bench s15850.1.test 8 s15850.1.length8.output
+./a.out s15850.1.bench s15850.1.test 10 s15850.1.length10.output
+./a.out s15850.1.bench s15850.1.test 12 s15850.1.length12.output
+./a.out s15850.1.bench s15850.1.test 14 s15850.1.length14.output
+./a.out s15850.1.bench s15850.1.test 16 s15850.1.length16.output
+
+./a.out s35932.bench s35932.test 2 s35932length2.output
+./a.out s35932.bench s35932.test 4 s35932length4.output
+./a.out s35932.bench s35932.test 6 s35932length6.output
+./a.out s35932.bench s35932.test 8 s35932length8.output
+./a.out s35932.bench s35932.test 10 s35932length10.output
+./a.out s35932.bench s35932.test 12 s35932length12.output
+./a.out s35932.bench s35932.test 14 s35932length14.output
+./a.out s35932.bench s35932.test 16 s35932length16.output
+
+./a.out s38417.bench s38417.test 2 s38417length2.output
+./a.out s38417.bench s38417.test 4 s38417length4.output
+./a.out s38417.bench s38417.test 6 s38417length6.output
+./a.out s38417.bench s38417.test 8 s38417length8.output
+./a.out s38417.bench s38417.test 10 s38417length10.output
+./a.out s38417.bench s38417.test 12 s38417length12.output
+./a.out s38417.bench s38417.test 14 s38417length14.output
+./a.out s38417.bench s38417.test 16 s38417length16.output
+
+./a.out s38584.1.bench s38584.1.test 2 s38584.1.length2.output
+./a.out s38584.1.bench s38584.1.test 4 s38584.1.length4.output
+./a.out s38584.1.bench s38584.1.test 6 s38584.1.length6.output
+./a.out s38584.1.bench s38584.1.test 8 s38584.1.length8.output
+./a.out s38584.1.bench s38584.1.test 10 s38584.1.length10.output
+./a.out s38584.1.bench s38584.1.test 12 s38584.1.length12.output
+./a.out s38584.1.bench s38584.1.test 14 s38584.1.length14.output
+./a.out s38584.1.bench s38584.1.test 16 s38584.1.length16.output
+
+
