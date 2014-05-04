@@ -531,7 +531,7 @@ int main(int argc, char* argv[])
                 inEncrypted = inEncrypted + inTableV[j]->code.length();
                 cout << inTableV[j]->code << endl;
                 count++;
-                //inputVectorsBroken.erase(inputVectorsBroken.begin() + j);
+                inputVectorsBrokenCopy.erase(inputVectorsBrokenCopy.begin() + j);
             }
         }
         //temp.clear();
@@ -557,7 +557,7 @@ int main(int argc, char* argv[])
                 outEncrypted = outEncrypted + outTableV[j]->code.length();
                 cout << outTableV[j]->code << endl;
                 count++;
-                //inputVectorsBroken.erase(inputVectorsBroken.begin() + j);
+                outputVectorsBrokenCopy.erase(outputVectorsBrokenCopy.begin() + j);
             }
         }
         //temp.clear();
