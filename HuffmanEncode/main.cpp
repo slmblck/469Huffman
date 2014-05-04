@@ -253,8 +253,8 @@ int main(int argc, char* argv[])
                 string outputVec = inputNOutput.substr(endInput+1);
                 size_t outSize = outputVec.size();
 
-                //inLength = inLength + inputVec.length();
-                //outLength = outLength + outputVec.length();
+                inLength = inLength + inputVec.length();
+                outLength = outLength + outputVec.length();
                 //Add the input and output to the vector
                 inputVectors.push_back(inputVec);
                 outputVectors.push_back(outputVec);
@@ -265,8 +265,6 @@ int main(int argc, char* argv[])
                 //Now break up the vectors into strings of length 4
                 for(int i = 0; (unsigned)i < endInput; i = i + breakUpFactor){
                     string temp = inputVec.substr(i, breakUpFactor);
-                    //removes spaces if they exist (usually does nothing)
-                    //temp.erase(end_pos, temp.end());
 
                     while (temp.size() < (unsigned)breakUpFactor) {
                         temp.append("0");
@@ -527,7 +525,7 @@ int main(int argc, char* argv[])
             size_t found;
             if((found = temp.find(stemp)) != string::npos){
                 //cout << temp << "Equivalent to " << stemp << endl;
-                inLength = inLength + inTableV[j]->val.length();
+                //inLength = inLength + inTableV[j]->val.length();
                 inEncrypted = inEncrypted + inTableV[j]->code.length();
                 cout << inTableV[j]->code << endl;
                 count++;
@@ -553,7 +551,7 @@ int main(int argc, char* argv[])
             size_t found;
             if((found = temp.find(stemp)) != string::npos){
                 //cout << temp << "Equivalent to " << stemp << endl;
-                outLength = outLength + outTableV[j]->val.length();
+                //outLength = outLength + outTableV[j]->val.length();
                 outEncrypted = outEncrypted + outTableV[j]->code.length();
                 cout << outTableV[j]->code << endl;
                 count++;
